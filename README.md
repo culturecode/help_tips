@@ -13,8 +13,7 @@ In your database
 ```ruby
   create_table :tip_hides do |t|
     t.integer :user_id
-    t.integer :tip_id
-    t.string :route
+    t.string :identifier
 
     t.timestamps
   end

@@ -1,6 +1,16 @@
 module HelpTipsHelper
-  def help_tip(title = nil, &block)
-    content_for(:help_tip) { render('help_tips/help_tip', :title => title, :body => capture(&block)) unless TipHide.hidden?(current_user, current_route) }
+
+  def help_tip_content(*args, &block)
+    content_for :help_tip, help_tip(*args, &block)
+  end
+
+  def help_tip(title = nil, body = nil, identifier = "#{params[:controller]}_#{params[:action]}", &block)
+    if block_given?
+      identifier = body
+      body = capture(&block)
+    end
+
+    render('help_tips/help_tip', :title => title, :body => body, :identifier => identifier) unless TipHide.hidden?(current_user, identifier)
   end
 
   def help_modal(title = nil, &block)
@@ -10,13 +20,5 @@ module HelpTipsHelper
   def help_button
     icon = '<i class="icon-question-sign"></i> '.html_safe
     link_to icon + 'Help', "#help-modal", :class => 'btn', :data => {:toggle => 'modal'}
-  end  
-
-  def route?(string)
-    current_route == string
-  end
-
-  def current_route
-    "#{params[:controller]}##{params[:action]}"
   end  
 end

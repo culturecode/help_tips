@@ -1,6 +1,6 @@
 class HelpTipsController < ApplicationController
   def hide
-    TipHide.create!(:user => current_user, :route => "#{params[:tip_controller]}##{params[:tip_action]}")
+    TipHide.create!(:user => current_user, :identifier => params[:tip_identifier])
     
     respond_to do |format|
       format.html {redirect_to :back}
