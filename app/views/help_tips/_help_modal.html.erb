@@ -6,6 +6,6 @@
     <p><%= body %></p>
   </div>
   <div class="modal-footer">
-    <a href="#" class="btn" data-dismiss="modal">Close</a>
+    <%= footer || link_to('Close', '#', :class => 'btn', 'data-dismiss' => 'modal') %>
   </div>
 </div>
