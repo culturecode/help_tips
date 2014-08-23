@@ -1,5 +1,5 @@
 <div class="help_tip alert alert-info alert-help" data-tip-identifier="<%= identifier %>">
   <a class="close" data-dismiss="alert" href="#">&times;</a>
   <%= content_tag :h3, title, :class => 'title' if title.present? %>
-  <p><%= body %></p>
+  <%= simple_format body %>
 </div>
