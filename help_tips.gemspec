@@ -17,7 +17,8 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", [">= 3.2", "< 5.0"]
+  s.add_dependency "rails", [">= 3.2", "< 7"]
 
+  s.add_development_dependency "sprockets", "~> 3" # ensure we don't move to Sprockets 4
   s.add_development_dependency "sqlite3"
 end
